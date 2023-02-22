@@ -2,10 +2,16 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import Connection from './database/db.js';
-const app = express();
-dotenv.config();
+import router from './routes/route.js';
 
+import Connection from './database/db.js';
+
+const app = express();
+
+
+dotenv.config();
+app.use(cors());
+app.use('/', router);
 
 const USERNAME = process.env.DB_USERNAME;
 const PASSWORD = process.env.DB_PASSWORD;
